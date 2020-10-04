@@ -4,7 +4,9 @@ export class Product {
     dui: string;
     vehicle: string;
     amount: number;
-
+    discount: number;
+    tamount: number;
+    vistas: number;
    
 }
 

@@ -11,7 +11,11 @@ import { Product } from '../models/product';
 })
 
 export class ProductService {
+ conta=0;
+ lastdui;
 
+ j = 0;
+productList2: Product[];
   // Traer los datos de firebase
   productList: AngularFireList<any>;
 
@@ -22,20 +26,87 @@ export class ProductService {
 
   
   getProducts() { 
-    return this.productList = this.firebase.list('student');
+    return this.productList = this.firebase.list('products');
   }
 
 
   insertProduct(product: Product) {
- 
-    this.productList.push({
+
+    let vst;
+    let dat;
+    let conta=0;
+    
+      this.firebase.database.ref("products").orderByChild
+     ("dui").equalTo(product.dui).on("child_added", function(snapshotChanges) {
+     
+      dat = snapshotChanges.child("vistas").val();
+        if(dat != null){
+          
+          conta +=1;
+        }    
+    });
+    
+console.log(conta);
+     
+   
+    if(conta == 0){
+      let discount= 0;
+      let tamount = 0;
+      product.vistas = 1;
+      this.productList.push({
+        name: product.name,
+        dui: product.dui,
+        vehicle: product.vehicle,
+        amount: product.amount,
+        discount: discount,
+        tamount: tamount,
+        vistas: product.vistas
+        
+      });
+    }else if(conta == 2){
+      
+      let discount= 0.05;
+      let tamount = (product.amount-product.amount*0.05);
+      product.vistas= product.vistas+1;
+      this.productList.push({
+        name: product.name,
+        dui: product.dui,
+        vehicle: product.vehicle,
+        amount: product.amount,
+        discount: discount,
+        tamount: tamount,
+        vistas: conta
+      });
+    }else if(conta >5){
+     let discount = 0.08;
+     let tamount = (product.amount-product.amount*0.08);
+     product.vistas= product.vistas+1;
+      this.productList.push({
       name: product.name,
       dui: product.dui,
       vehicle: product.vehicle,
-      amount: product.amount
-      
-    
+      amount: product.amount,
+      discount: discount,
+      tamount: tamount,
+      vistas: conta
     });
+    }else if(conta != 0 || conta >= 1  || conta <=5 ){
+      let discount = 0;
+      let tamount = 0.00;
+      product.vistas = product.vistas+1;
+      this.productList.push({
+        name: product.name,
+        dui: product.dui,
+        vehicle: product.vehicle,
+        amount: product.amount,
+        discount: discount,
+        tamount: tamount,
+        vistas: conta
+      });
+      console.log(vst+1);
+    }
+    
+  
   }
 
   

@@ -48,8 +48,12 @@ export class ProductListComponent implements OnInit {
         item.forEach(element => {
           let x = element.payload.toJSON();
           x["$key"] = element.key;
+          
           this.productList.push(x as Product);
+         
         });
+     
+       
       });
   }
 
