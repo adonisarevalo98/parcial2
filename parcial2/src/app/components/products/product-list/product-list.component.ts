@@ -8,7 +8,7 @@ import { ProductService } from '../../../services/product.service';
 
 // toastr
 import { ToastrService } from 'ngx-toastr';
-
+import { Observable, of } from "rxjs";
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   productList: Product[];
 
   constructor(
-    private productService: ProductService,
+    public productService: ProductService,
     private toastr: ToastrService
   ) { }
 
@@ -41,6 +41,50 @@ export class ProductListComponent implements OnInit {
      Cuando ya se tiene el elemento se asigna a mi arreglo 'productList' para ser mostrado en mi pantalla list
      this.productList.push(x as Product);
   */
+ fakeValidateUserData() {
+  return of({
+    userDate1: 1,
+    userData2: 2
+  });
+}
+
+//
+
+private setting = {
+  element: {
+    dynamicDownload: null as HTMLElement
+  }
+}
+//Creacion de archivo TXT
+dynamicDownloadTxt(product: Product) {
+  
+this.productService.selectedProduct = Object.assign({}, product);
+
+
+this.dyanmicDownloadByHtmlTag( {
+  fileName: ' Ticket: ' +this.productService.selectedProduct.dui,
+  text:  '\nDui: ' + this.productService.selectedProduct.dui + '\nName: '+this.productService.selectedProduct.name+
+ '\nVehicle: '+this.productService.selectedProduct.vehicle+ '\nTotal Amount: $'+this.productService.selectedProduct.tamount
+
+});
+
+}
+private dyanmicDownloadByHtmlTag(arg: {
+  fileName: string,
+  text: string
+}) {
+  if (!this.setting.element.dynamicDownload) {
+    this.setting.element.dynamicDownload = document.createElement('a');
+  }
+  const element = this.setting.element.dynamicDownload;
+  const fileType = 'text/plain';
+  element.setAttribute('href', `data:${fileType};charset=utf-8,${encodeURIComponent(arg.text)}`);
+  element.setAttribute('download', arg.fileName);
+
+  var event = new MouseEvent("click");
+  element.dispatchEvent(event);
+}
+  
   ngOnInit() {
     return this.productService.getProducts()
       .snapshotChanges().subscribe(item => {

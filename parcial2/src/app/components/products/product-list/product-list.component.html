@@ -28,11 +28,14 @@
                    
                     
                     <td>
-                        <a class="btn btn-secondary text-white" (click)="onEdit(product)">
+                        <a class="btn btn-secondary text-white" data-toggle="modal" data-target="#exampleModal" (click)="onEdit(product)">
                             <i class="far fa-edit"></i>
                         </a>
                         <a class="btn btn-danger text-white" (click)="onDelete(product.$key)">
                             <i class="fas fa-trash-alt"></i>
+                        </a>
+                        <a class="btn btn-primary text-black" (click)="dynamicDownloadTxt(product)">
+                            <i class="fas fa-download"></i>
                         </a>
                     </td>
                 </tr>
@@ -40,3 +43,44 @@
         </table>
     </div>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ticket</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+            <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="productService.selectedProduct.$key">
+
+            <div class="form-group">
+                <a>Name</a>
+                <input type="text" class="form-control" name="name" #name="ngModel"
+                    [(ngModel)]="productService.selectedProduct.name" placeholder="name" readonly>
+            </div>
+
+            <div class="form-group">
+              <a>DUI</a>
+                <input type="text" class="form-control" name="dui" #category="ngModel"
+                    [(ngModel)]="productService.selectedProduct.dui" placeholder="DUI (0000000-0)" readonly>
+            </div>
+
+            <div class="form-group">
+                <a>Vehicle</a>
+                <input type="text" class="form-control" name="vehicle" #location="ngModel"
+                    [(ngModel)]="productService.selectedProduct.vehicle" placeholder="Vehicle" readonly>
+            </div>
+            <div class="form-group">
+                <a>Total Amount</a>
+                <input type="number" class="form-control" name="amount" #location="ngModel"
+                    [(ngModel)]="productService.selectedProduct.tamount" placeholder="Amount" readonly>
+            </div>      
+          </div>
+       
+      </div>
+    </div>
+    </div>

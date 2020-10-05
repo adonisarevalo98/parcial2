@@ -51,7 +51,7 @@ console.log(conta);
    
     if(conta == 0){
       let discount= 0;
-      let tamount = 0;
+      let tamount = product.amount;
       product.vistas = 1;
       this.productList.push({
         name: product.name,
@@ -92,7 +92,7 @@ console.log(conta);
     });
     }else if(conta != 0 || conta >= 1  || conta <=5 ){
       let discount = 0;
-      let tamount = 0.00;
+      let tamount = product.amount;
       product.vistas = product.vistas+1;
       this.productList.push({
         name: product.name,
