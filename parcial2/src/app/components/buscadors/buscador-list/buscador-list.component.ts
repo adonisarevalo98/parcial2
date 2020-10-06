@@ -18,6 +18,8 @@ import { Observable, of } from "rxjs";
 export class BuscadorListComponent implements OnInit {
 
   productList: Product[];
+  texto: string;
+
   constructor(
     public productService: ProductService,
     private toastr: ToastrService

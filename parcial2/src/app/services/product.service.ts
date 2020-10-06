@@ -29,11 +29,6 @@ productList2: Product[];
     return this.productList = this.firebase.list('products');
   }
 
-  getProductsByInput(){
-    
-    return this.firebase.database.ref("products");
-    
-  }
 
   insertProduct(product: Product) {
 

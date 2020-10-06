@@ -29,8 +29,8 @@ import { ProductService } from './services/product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { BuscadorsComponent } from './components/buscadors/buscadors.component';
-import { BuscadorComponent } from './components/buscadors/buscador/buscador.component';
 import { BuscadorListComponent } from './components/buscadors/buscador-list/buscador-list.component';
+import { BuscadorListPipe } from './components/buscadors/buscador-list.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,8 +42,8 @@ import { BuscadorListComponent } from './components/buscadors/buscador-list/busc
     ProductListComponent,
     ProductComponent,
     BuscadorsComponent,
-    BuscadorComponent,
     BuscadorListComponent,
+    BuscadorListPipe,
     ],
   imports: [
     BrowserModule,

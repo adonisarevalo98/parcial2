@@ -6,7 +6,10 @@
         <h6 class="text-center">
             Client List
         </h6>
-        <table class="table table-lg table-hover">
+        <div class="form-group mb-4">
+            <input class="form-control" type="text" [(ngModel)]="texto" placeholder="Search">
+          </div>
+        <table class="table table-lg table-hover" *ngIf="(productList | buscadorList: texto).length > 0; else noResults">
             <tbody>
                 <tr>
                     <th></th>
@@ -17,7 +20,7 @@
                     <th>Discount</th>
                     <th>Final Amount</th>
                 </tr>
-                <tr *ngFor="let product of productList">
+                <tr *ngFor="let product of productList | buscadorList: texto">
                    
                     <td>{{product.$key}}</td>              
                     <td>{{product.name}}</td>
@@ -31,6 +34,9 @@
                     
                 </tr>
             </tbody>
-        </table>
+        </table> 
+        <ng-template #noResults>
+            <p>No results found for "{{texto}}".</p>
+          </ng-template>
     </div>
 </div>
