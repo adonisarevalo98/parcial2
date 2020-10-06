@@ -6,12 +6,16 @@
         <h6 class="text-center">
             Client List
         </h6>
+<<<<<<< HEAD
         <br>
        
         <div class="form-group col-sm-5">
             <a >
                 Enter a Name, DUI, Vehicle or Amount to search:
             </a>
+=======
+        <div class="form-group mb-4">
+>>>>>>> 51a9dc6d5687dff86cc1802ebc8120e7dc950c81
             <input class="form-control" type="text" [(ngModel)]="texto" placeholder="Search">
           </div>
         <table class="table table-lg table-hover" *ngIf="(productList | buscadorList: texto).length > 0; else noResults">
