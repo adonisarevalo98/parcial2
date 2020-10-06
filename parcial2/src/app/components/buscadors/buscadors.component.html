@@ -1,0 +1,38 @@
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap">
+    
+    <ul class="nav flex-md">
+      <br><br>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard'] ">
+          <i class="fas fa-user"></i>User Profile
+        </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/buscador']">
+              <i class="fas fa-search"></i>Buscador
+          </a>
+      </li>
+      <!-- Calling SignOut() Api from AuthService -->
+      <li class="nav-item">
+        <a class="nav-link" (click)="authService.SignOut()">
+          <i class="fas fa-sign-out-alt"></i>Log out
+        </a>
+      </li> 
+    </ul>
+  </nav>
+  
+  <!-- Sidebar navigation -->
+  
+<br><br>
+<div class="container">
+    <div class="row">
+ 
+      <div class="col-md-12 text-center">
+          
+          <app-buscador-list></app-buscador-list>
+          
+        </div>
+    </div>
+</div>
+  
