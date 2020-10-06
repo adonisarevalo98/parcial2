@@ -28,6 +28,9 @@ import { ProductComponent } from './components/products/product/product.componen
 import { ProductService } from './services/product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { BuscadorsComponent } from './components/buscadors/buscadors.component';
+import { BuscadorComponent } from './components/buscadors/buscador/buscador.component';
+import { BuscadorListComponent } from './components/buscadors/buscador-list/buscador-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,10 @@ import { ToastrModule } from 'ngx-toastr';
     ForgotPasswordComponent,
     VerifyEmailComponent,ProductsComponent,
     ProductListComponent,
-    ProductComponent
+    ProductComponent,
+    BuscadorsComponent,
+    BuscadorComponent,
+    BuscadorListComponent,
     ],
   imports: [
     BrowserModule,

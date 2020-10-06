@@ -1,0 +1,50 @@
+<!-- Top navigation -->
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0">
+      <img class="brand-logo" src="" alt="Logo">
+    </a>
+  </nav>
+  
+  <!-- Sidebar navigation -->
+  <div class="container-fluid">
+    <div class="row">
+  
+      <nav class="col-md-2 d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link">
+                <i class="fas fa-user"></i>User Profile
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/buscador']">
+                    <i class="fas fa-search"></i>Buscador
+                </a>
+            </li>
+            <!-- Calling SignOut() Api from AuthService -->
+            <li class="nav-item">
+              <a class="nav-link" (click)="authService.SignOut()">
+                <i class="fas fa-sign-out-alt"></i>Log out
+              </a>
+            </li> 
+          </ul>
+        </div>
+      </nav>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+
+        <app-buscador></app-buscador>
+
+      </div>
+      <div class="col-md-9 text-center">
+          
+          <app-buscador-list></app-buscador-list>
+          
+        </div>
+    </div>
+</div>
+  
